@@ -1,0 +1,41 @@
+name: Update VPN Subscriptions
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Авто-обновление каждый час
+  workflow_dispatch: # Кнопка для ручного запуска
+
+jobs:
+  update-subs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch all subscriptions from 3X-UI
+        run: |
+          # ПОДПИСКА 1 (например, для твоего телефона)
+          curl -s "https://158.160.191.123:2096/trjhrjfry/azuktay2rxjxfgdd" > 1.txt
+
+          # ПОДПИСКА 2 (например, для ПК или друга)
+          curl -s "https://158.160.191.123:2096/trjhrjfry/f2bx6rf8yen0r1nh" > 2.txt
+
+          # ПОДПИСКА 3 (можешь добавлять сколько угодно рядами ниже)
+          curl -s "https://158.160.191.123:2096/trjhrjfry/ru6jy37s8tkse00q" > 3.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/yt7f0iwub663radv" > 4.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/crjlgj72x9b6tet4" > 5.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/mof95b5hwcgtr7re" > 6.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/5y4yxpf5byt1v7u8" > 7.txt
+          
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add *.txt
+          if git diff --staged --quiet; then
+            echo "Ничего не изменилось, пропускаем."
+          else
+            git commit -m "Авто-обновление всех подписок"
+            git push
+          fi
