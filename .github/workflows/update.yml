@@ -15,17 +15,17 @@ jobs:
       - name: Fetch all subscriptions from 3X-UI
         run: |
           # ПОДПИСКА 1 (например, для твоего телефона)
-          curl -s "https://158.160.191.123:2096/trjhrjfry/azuktay2rxjxfgdd" > 1.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/azuktay2rxjxfgdd" > pervii.txt
 
           # ПОДПИСКА 2 (например, для ПК или друга)
-          curl -s "https://158.160.191.123:2096/trjhrjfry/f2bx6rf8yen0r1nh" > 2.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/f2bx6rf8yen0r1nh" > dva.txt
 
           # ПОДПИСКА 3 (можешь добавлять сколько угодно рядами ниже)
-          curl -s "https://158.160.191.123:2096/trjhrjfry/ru6jy37s8tkse00q" > 3.txt
-          curl -s "https://158.160.191.123:2096/trjhrjfry/yt7f0iwub663radv" > 4.txt
-          curl -s "https://158.160.191.123:2096/trjhrjfry/crjlgj72x9b6tet4" > 5.txt
-          curl -s "https://158.160.191.123:2096/trjhrjfry/mof95b5hwcgtr7re" > 6.txt
-          curl -s "https://158.160.191.123:2096/trjhrjfry/5y4yxpf5byt1v7u8" > 7.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/ru6jy37s8tkse00q" > tri.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/yt7f0iwub663radv" > chetiri.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/crjlgj72x9b6tet4" > pyati.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/mof95b5hwcgtr7re" > shesht.txt
+          curl -s "https://158.160.191.123:2096/trjhrjfry/5y4yxpf5byt1v7u8" > semi.txt
           
 
       - name: Commit and push if changed
