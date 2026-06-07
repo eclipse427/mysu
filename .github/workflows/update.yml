@@ -29,11 +29,12 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git pull origin main --rebase
+          
           git add *.txt
           if git diff --staged --quiet; then
-            echo "No changes"
+            echo "Изменений в подписках нет. Всё актуально."
           else
-            git commit -m "Auto-update subs"
-            git push origin main
+            git commit -m "Авто-обновление всех подписок"
+            # Принудительно пушим напрямую в ветку main без лишних проверок
+            git push origin HEAD:main
           fi
