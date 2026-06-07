@@ -8,42 +8,32 @@ on:
 jobs:
   update-subs:
     runs-on: ubuntu-latest
-    # Вот эта строчка убирает варнинг гитхаба:
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Fetch all subscriptions from 3X-UI
         run: |
-          # ПОДПИСКА 1 (например, для твоего телефона)
-          curl -s "https://158.160.191.123:2096/trjhrjfry/azuktay2rxjxfgdd" > pervii.txt
-
-          # ПОДПИСКА 2 (например, для ПК или друга)
-          curl -s "https://158.160.191.123:2096/trjhrjfry/f2bx6rf8yen0r1nh" > dva.txt
-
-          # ПОДПИСКА 3 (можешь добавлять сколько угодно рядами ниже)
-          curl -s "https://158.160.191.123:2096/trjhrjfry/ru6jy37s8tkse00q" > tri.txt
-          curl -s "https://158.160.191.123:2096/trjhrjfry/yt7f0iwub663radv" > chetiri.txt
-          curl -s "https://158.160.191.123:2096/trjhrjfry/crjlgj72x9b6tet4" > pyati.txt
-          curl -s "https://158.160.191.123:2096/trjhrjfry/mof95b5hwcgtr7re" > shesht.txt
-          curl -s "https://158.160.191.123:2096/trjhrjfry/5y4yxpf5byt1v7u8" > semi.txt
-          
+          curl -sL --fail "https://158.160.191.123:2096/trjhrjfry/azuktay2rxjxfgdd" > pervii.txt || echo "Error 1"
+          curl -sL --fail "https://158.160.191.123:2096/trjhrjfry/f2bx6rf8yen0r1nh" > dva.txt || echo "Error 2"
+          curl -sL --fail "https://158.160.191.123:2096/trjhrjfry/ru6jy37s8tkse00q" > tri.txt || echo "Error 3"
+          curl -sL --fail "https://158.160.191.123:2096/trjhrjfry/yt7f0iwub663radv" > chetiri.txt || echo "Error 4"
+          curl -sL --fail "https://158.160.191.123:2096/trjhrjfry/crjlgj72x9b6tet4" > pyati.txt || echo "Error 5"
+          curl -sL --fail "https://158.160.191.123:2096/trjhrjfry/mof95b5hwcgtr7re" > shesht.txt || echo "Error 6"
+          curl -sL --fail "https://158.160.191.123:2096/trjhrjfry/5y4yxpf5byt1v7u8" > semi.txt || echo "Error 7"
 
       - name: Commit and push if changed
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Стягиваем изменения, если они были в браузере, и автоматически объединяем
           git pull origin main --rebase
-          
           git add *.txt
           if git diff --staged --quiet; then
-            echo "Изменений в подписках нет. Всё актуально."
+            echo "No changes"
           else
-            git commit -m "Авто-обновление всех подписок"
+            git commit -m "Auto-update subs"
             git push origin main
           fi
